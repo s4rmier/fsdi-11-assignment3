@@ -13,6 +13,7 @@ def output_formatter(results):
         out.append(task)
     return out
 
+
 def scan():
     conn = get_db()
     cursor = conn.execute(
@@ -21,6 +22,7 @@ def scan():
     results = cursor.fetchall()
     cursor.close()
     return output_formatter(results)
+
 
 def select_by_id(task_id):
     conn = get_db()
@@ -32,6 +34,7 @@ def select_by_id(task_id):
     if results:
         return output_formatter(results)[0]
     return []
+
 
 def insert(task_data):
     value_tuple = (
@@ -50,6 +53,7 @@ def insert(task_data):
     conn.execute(statement, value_tuple)
     conn.commit()
 
+
 def update(task_data, task_id):
     value_tuple = (
         task_data.get("summary"),
@@ -67,6 +71,7 @@ def update(task_data, task_id):
     conn = get_db()
     conn.execute(statement, value_tuple)
     conn.commit()
+
 
 def delete(task_id):
     conn = get_db()
