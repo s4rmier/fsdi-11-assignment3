@@ -25,7 +25,7 @@ def create_task():
 def get_single_task(pk):
     out = {
         "ok": True,
-        "task": task
+        "task": task.select_by_id(pk)
     }
 
     return out
